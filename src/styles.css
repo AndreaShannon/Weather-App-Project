@@ -4,6 +4,10 @@ body {
   margin: auto;
 }
 
+a {
+  text-decoration: none;
+}
+
 span img {
   width: 80px;
   margin-right: 100px;
