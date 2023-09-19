@@ -41,8 +41,7 @@ if (currentMinutes < 10) {
 
 currentCalender.innerHTML = `${currentDay} | ${currentMonth} ${currentDate} | ${currentHours}:${currentMinutes}`;
 
-//
-// Input of location function
+// Input of location function //
 function showTemperature(response) {
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#weather-description").innerHTML =
@@ -68,7 +67,7 @@ function handleSubmit(event) {
   let city = document.querySelector("#search-city-input").value;
   search(city);
 }
-/// Current Position Function ///
+// Current Position Function //
 function showPosition(response) {
   let latitude = response.coords.latitude;
   let longitude = response.coords.longitude;
