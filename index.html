@@ -26,8 +26,8 @@
   <body>
     <div class="container">
       <div class="weather-report">
-        <div>
-          <form class="location-input" id="search-form">
+        <div id="search-form">
+          <form class="location-input">
             <input
               type="search"
               id="search-city-input"
@@ -46,15 +46,22 @@
             alt="sun icon"
           />
         </span>
-        <div>
-          <span>
-            <a href="" id="temperature">°C</a>
-          </span>
-          <ul>
-            <li id="weather-description"></li>
-            <li>Humidity: <span id="humidity"></span>%</li>
-            <li>Wind: <span id="wind-speed"></span>km/h</li>
-          </ul>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="d-flex weather-temperature">
+              <strong id="temperature"></strong>
+              <span id="units">
+                |
+                <a href="" id="farenheit-link"> °F</a>
+                <a href="" id="celsius-link">°C</a>
+              </span>
+              <ul>
+                <li id="weather-description"></li>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind: <span id="wind-speed"></span>mph</li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div class="weather-container text-center">
           <div class="row">

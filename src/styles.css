@@ -20,6 +20,7 @@ li {
 span img {
   width: 80px;
   margin-right: 100px;
+  padding: 3px;
 }
 
 ul {
@@ -39,7 +40,8 @@ ul {
   cursor: pointer;
 }
 
-#temperature {
+#farenheit,
+#celsius {
   font-size: 18px;
   font-weight: 700;
   text-decoration: none;
@@ -79,6 +81,10 @@ ul {
     rgb(100, 163, 111) 100.2%
   );
   border-radius: 15px;
+}
+
+#weather-description::first-letter {
+  text-transform: capitalize;
 }
 
 .weather-container.text-center {
