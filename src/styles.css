@@ -1,16 +1,11 @@
 body {
   letter-spacing: 2px;
-  max-width: 700px;
   margin: auto;
-}
-
-a {
-  text-decoration: none;
-}
-
-span img {
-  width: 80px;
-  margin-right: 100px;
+  font-size: 14px;
+  font-family: "Flavors", cursive;
+  font-family: "Inclusive Sans", sans-serif;
+  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 footer {
@@ -18,72 +13,45 @@ footer {
   font-size: 12px;
 }
 
-input[type="submit"],
-input[type="search"] {
+li {
+  list-style: none;
+}
+
+span img {
+  width: 80px;
+  margin-right: 100px;
+}
+
+ul {
+  padding: 3px;
+}
+
+#submit-button,
+#location-button,
+#search-city-input {
   background: #fff;
   border: solid 1px #fff;
   border-radius: 30px;
-  font-size: 20px;
+  font-size: 14px;
   margin: 12px auto;
   padding: 5px 15px;
   color: black;
   cursor: pointer;
 }
 
-li {
-  list-style: none;
-}
-
-ul {
-  padding: 0;
-}
-span {
-  font-size: 18px;
-}
-
-.container {
-  display: block;
-  margin: 20px 10px;
-  padding: 20px 10px;
-  background: linear-gradient(
-    109.6deg,
-    rgb(251, 250, 225) 11.2%,
-    rgb(206, 240, 185) 47.5%,
-    rgb(100, 163, 111) 100.2%
-  );
-  border-radius: 15px;
-  max-width: 700px;
-}
-
-.col {
-  margin: 5px;
-  padding-top: 3px;
-}
-
-.date {
-  font-size: 16px;
-}
-
-#degree-farenheit,
-#degree-celsius {
-  color: black;
-  font-size: 28px;
-  text-decoration: none;
-}
-
 #temperature {
+  font-size: 18px;
   font-weight: 700;
   text-decoration: none;
   color: black;
 }
 
-#degree-farenheit {
-  font-weight: 300;
+#city {
+  font-size: 26px;
 }
 
-.row {
-  margin-left: 12px;
-  margin-right: 12px;
+#current-date-data {
+  font-size: 16px;
 }
 
 .location-input {
@@ -100,9 +68,17 @@ span {
 }
 
 .weather-report {
-  margin: -30px 20px;
+  display: block;
+  max-width: 700px;
+  margin: 15px auto;
   padding: 10px 15px;
-  padding-bottom: 25px;
+  background: linear-gradient(
+    109.6deg,
+    rgb(251, 250, 225) 11.2%,
+    rgb(206, 240, 185) 47.5%,
+    rgb(100, 163, 111) 100.2%
+  );
+  border-radius: 15px;
 }
 
 .weather-container.text-center {
@@ -110,10 +86,6 @@ span {
   margin: 10px 15px;
   padding: 10px;
   border-radius: 15px;
-}
-
-.weather-container.text-center h3 {
-  font-size: 22px;
 }
 
 .weather-container.text-center img {
