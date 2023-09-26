@@ -13,14 +13,12 @@ footer {
   font-size: 12px;
 }
 
-li {
-  list-style: none;
+h3 {
+  font-size: 14px;
 }
 
-span img {
-  width: 80px;
-  margin-right: 100px;
-  padding: 3px;
+li {
+  list-style: none;
 }
 
 ul {
@@ -40,8 +38,15 @@ ul {
   cursor: pointer;
 }
 
-#farenheit,
-#celsius {
+#farenheit-link,
+#celsius-link {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+}
+
+a #celsius-link {
   font-size: 18px;
   font-weight: 700;
   text-decoration: none;
@@ -69,6 +74,11 @@ ul {
   border-radius: 15px;
 }
 
+.forecast-temp {
+  font-size: 12px;
+  padding: 6px;
+}
+
 .weather-report {
   display: block;
   max-width: 700px;
@@ -90,11 +100,16 @@ ul {
 .weather-container.text-center {
   background: rgba(255, 255, 255, 0.5);
   margin: 10px 15px;
-  padding: 10px;
+  padding: 20px 20px 5px 20px;
   border-radius: 15px;
 }
 
 .weather-container.text-center img {
-  width: 48px;
+  width: 32px;
   max-width: 100%;
+}
+
+.weather-temperature strong {
+  font-weight: 500;
+  font-size: 30px;
 }

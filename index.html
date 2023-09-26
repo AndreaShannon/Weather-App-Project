@@ -27,8 +27,8 @@
     <div class="container">
       <div class="weather-report">
         <div id="search-form">
-          <form class="location-input">
-            <input
+          <form class="location-input" >
+            <input class="col-8"
               type="search"
               id="search-city-input"
               placeholder="Enter Location"
@@ -39,84 +39,82 @@
         </div>
         <h1 id="city"></h1>
         <h2 class="date" id="current-date-data"></h2>
-
-        <span>
-          <img
-            src="src/images/2682848_day_forecast_sun_sunny_weather_icon.svg"
+<div class="row">
+  <div class="col-6">
+    <div class="d-flex weather-temperature">
+    <img id ="icon"
+            src="https://openweathermap.org/img/wn/10d@2x.png"
             alt="sun icon"
+            class="d-flex"
           />
-        </span>
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="d-flex weather-temperature">
-              <strong id="temperature"></strong>
-              <span id="units">
-                |
-                <a href="" id="farenheit-link"> °F</a>
-                <a href="" id="celsius-link">°C</a>
-              </span>
-              <ul>
-                <li id="weather-description"></li>
-                <li>Humidity: <span id="humidity"></span>%</li>
-                <li>Wind: <span id="wind-speed"></span>mph</li>
-              </ul>
-            </div>
-          </div>
+        <div class="d-flex"> 
+          <strong id="temperature">80</strong>
+        </small class="units">°F |°C<small>
+      </div> 
+        </div>
+        </div>
+      </div>
+          <div class="col-6">
+          <ul>
+            <li id="weather-description"></li>
+            <li>Humidity: <span id="humidity"></span>%</li>
+            <li>Wind: <span id="wind-speed"></span>mph</li>
+          </ul>
         </div>
         <div class="weather-container text-center">
           <div class="row">
-            <div class="col">
-              <h3>Monday</h3>
+            <div class="col-2">
+              <h3>Mon</h3>
               <img
                 src="src/images/2682802_cloudy_day_fog_foggy_mist_icon.svg"
                 alt=""
               />
-              <p><strong>81°</strong> | 64°</p>
+              <p class="forecast-temp"><strong>81°</strong>|64°</p>
             </div>
 
-            <div class="col">
-              <h3>Tuesday</h3>
+            <div class="col-2">
+              <h3>Tues</h3>
               <img
                 src="src/images/2682848_day_forecast_sun_sunny_weather_icon.svg"
                 alt=""
               />
-              <p><strong>85°</strong> | 66°</p>
+              <p class="forecast-temp"><strong>85°</strong>|66°</p>
             </div>
-            <div class="col">
-              <h3>Wednesday</h3>
+            <div class="col-2">
+              <h3>Wed</h3>
               <img
                 src="src/images/2682848_day_forecast_sun_sunny_weather_icon.svg"
                 alt=""
               />
-              <p><strong>81°</strong> | 67°</p>
+              <p class="forecast-temp"><strong>81°</strong>|67°</p>
             </div>
-            <div class="col">
-              <h3>Thursday</h3>
+            <div class="col-2">
+              <h3>Thurs</h3>
               <img
                 src="src/images/2682812_cloud_coudy_day_fog_mist_icon.svg"
                 alt=""
               />
-              <p><strong>79°</strong> | 68°</p>
+              <p class="forecast-temp"><strong>79°</strong>|68°</p>
             </div>
-            <div class="col">
-              <h3>Friday</h3>
+            <div class="col-2">
+              <h3>Fri</h3>
               <img
                 src="src/images/2682848_day_forecast_sun_sunny_weather_icon.svg"
                 alt=""
               />
-              <p><strong>77°</strong> | 66°</p>
+              <p class="forecast-temp"><strong>77°</strong>|66°</p>
             </div>
-            <div class="col">
-              <h3>Saturday</h3>
+            <div class="col-2">
+              <h3>Sat</h3>
               <img
                 src="src/images/2682802_cloudy_day_fog_foggy_mist_icon.svg"
                 alt=""
               />
-              <p><strong>79°</strong> | 65°</p>
+              <p class="forecast-temp"><strong>79°</strong>|65°</p>
             </div>
           </div>
         </div>
-      </div>
+      
     </div>
     <footer>
       Icons by
