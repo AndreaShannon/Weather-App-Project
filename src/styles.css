@@ -1,7 +1,7 @@
 body {
   letter-spacing: 2px;
   margin: auto;
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Flavors", cursive;
   font-family: "Inclusive Sans", sans-serif;
   font-family: "Merriweather", serif;
@@ -40,15 +40,6 @@ ul {
 
 #farenheit-link,
 #celsius-link {
-  font-size: 18px;
-  font-weight: 700;
-  text-decoration: none;
-  color: black;
-}
-
-a #celsius-link {
-  font-size: 18px;
-  font-weight: 700;
   text-decoration: none;
   color: black;
 }
@@ -58,32 +49,14 @@ a #celsius-link {
 }
 
 #current-date-data {
-  font-size: 16px;
-}
-
-.location-input {
-  text-align: right;
-  position: static;
-  top: 50px;
-}
-
-.col:hover {
-  cursor: pointer;
-  background: rgba(100, 163, 110, 0.055);
-  transition: all 200ms ease-in-out;
-  border-radius: 15px;
-}
-
-.forecast-temp {
   font-size: 12px;
-  padding: 6px;
 }
 
 .weather-report {
   display: block;
-  max-width: 700px;
+  max-width: 500px;
   margin: 15px auto;
-  padding: 10px 15px;
+  padding: 15px 28px;
   background: linear-gradient(
     109.6deg,
     rgb(251, 250, 225) 11.2%,
@@ -98,10 +71,13 @@ a #celsius-link {
 }
 
 .weather-container.text-center {
+  display: flex;
+  align-items: center;
   background: rgba(255, 255, 255, 0.5);
-  margin: 10px 15px;
-  padding: 20px 20px 5px 20px;
-  border-radius: 15px;
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 5px;
+  justify-content: space-evenly;
 }
 
 .weather-container.text-center img {
@@ -109,7 +85,19 @@ a #celsius-link {
   max-width: 100%;
 }
 
+.weather-temperature {
+  display: flex;
+  align-items: center;
+}
+
 .weather-temperature strong {
-  font-weight: 500;
-  font-size: 30px;
+  font-weight: 600;
+  font-size: 36px;
+  margin-right: 2px;
+  line-height: 1;
+}
+
+.weather-temperature img {
+  height: 64px;
+  width: 64px;
 }

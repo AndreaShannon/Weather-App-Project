@@ -39,22 +39,22 @@
         </div>
         <h1 id="city"></h1>
         <h2 class="date" id="current-date-data"></h2>
-<div class="row">
-  <div class="col-6">
-    <div class="d-flex weather-temperature">
-    <img id ="icon"
+    <div class="row">
+      <div class="col-6">
+        <div class="weather-temperature">
+          <img id ="icon"
             src="https://openweathermap.org/img/wn/10d@2x.png"
             alt="sun icon"
             class="d-flex"
           />
-        <div class="d-flex"> 
-          <strong id="temperature">80</strong>
-        </small class="units">°F |°C<small>
-      </div> 
-        </div>
+          <div class="d-flex"> 
+          <strong id="temperature"></strong>
+          <span class="units"> <a href="" id="farenheit-link">°F</a> | <a href="" id="celsius-link">°C</a></span>
+          </div> 
         </div>
       </div>
-          <div class="col-6">
+    </div>
+        <div class="col-6">
           <ul>
             <li id="weather-description"></li>
             <li>Humidity: <span id="humidity"></span>%</li>

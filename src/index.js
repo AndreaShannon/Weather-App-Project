@@ -43,7 +43,11 @@ currentCalender.innerHTML = `${currentDay} | ${currentMonth} ${currentDate} | ${
 
 // Input of location function //
 function showTemperature(response) {
-  console.log(response.data);
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+
+  farenheitTemperature = response.data.main.temp;
+
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].description;
@@ -57,10 +61,6 @@ function showTemperature(response) {
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-
-  let temperatureInput = document.querySelector("#farenheit");
-  let temperature = Math.round(response.data.main.temp);
-  temperatureInput.innerHTML = `${temperature}°F`;
 }
 
 function search(city) {
@@ -89,6 +89,20 @@ function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 }
+// Unit Conversion Function //
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let celsiusTemperature = ((farenheitTemperature - 32) * 5) / 9;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerhtml = Math.round(celsiusTemperature);
+}
+
+function displayFarenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerhtml = Math.round(farenheitTemperature);
+}
 
 let searchButton = document.querySelector("#temperature");
 searchButton.addEventListener("click", showTemperature);
@@ -98,5 +112,13 @@ searchForm.addEventListener("submit", handleSubmit);
 
 let currentLocationButton = document.querySelector("#location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+let farenheitLink = document.querySelector("#farenheit-link");
+farenheitLink.addEventListener("click", displayFarenheitTemperature);
+
+let farenheitTemperature = null;
 
 search("San Diego");
