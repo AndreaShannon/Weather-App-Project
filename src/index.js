@@ -95,14 +95,15 @@ function displayFarenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
   let farenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerhtml = Math.round(farenheitTemperature);
+  temperatureElement.innerHTML = Math.round(farenheitTemperature);
 }
 
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerhtml = Math.round(celsiusTemperature);
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
+let celsiusTemperature = null;
 
 let searchButton = document.querySelector("#temperature");
 searchButton.addEventListener("click", showTemperature);
@@ -118,7 +119,5 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 let farenheitLink = document.querySelector("#farenheit-link");
 farenheitLink.addEventListener("click", displayFarenheitTemperature);
-
-let celsiusTemperature = null;
 
 search("San Diego");

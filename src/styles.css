@@ -44,9 +44,9 @@ ul {
 
 #farenheit-link,
 #celsius-link {
+  cursor: pointer;
   text-decoration: none;
   color: rgb(0, 0, 0);
-  cursor: default;
 }
 
 #city {
