@@ -44,19 +44,19 @@ currentCalender.innerHTML = `${currentDay} | ${currentMonth} ${currentDate} | ${
 // Input of location function //
 function showTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
-
-  farenheitTemperature = response.data.main.temp;
-
-  document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#weather-description").innerHTML =
-    response.data.weather[0].description;
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind-speed").innerHTML = Math.round(
-    response.data.wind.speed
-  );
-
+  let cityElement = document.querySelector("#city");
+  let descriptionElement = document.querySelector("#weather-description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind-speed");
   let iconElement = document.querySelector("#icon");
+
+  celsiusTemperature = response.data.main.temp;
+
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  cityElement.innerHTML = response.data.name;
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
   iconElement.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -65,7 +65,7 @@ function showTemperature(response) {
 
 function search(city) {
   let apiKey = "49b631c45785fe73d2a88477803dea22";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
 
@@ -78,7 +78,7 @@ function handleSubmit(event) {
 function showPosition(response) {
   let latitude = response.coords.latitude;
   let longitude = response.coords.longitude;
-  let units = "imperial";
+  let units = "metric";
   let apiKey = "9e0fb79c2f66d0cd0dcf06710976a873";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&&appid=${apiKey}&units=${units}`;
 
@@ -89,19 +89,19 @@ function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 }
+
 // Unit Conversion Function //
-
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  let celsiusTemperature = ((farenheitTemperature - 32) * 5) / 9;
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerhtml = Math.round(celsiusTemperature);
-}
-
 function displayFarenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
+  let farenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerhtml = Math.round(farenheitTemperature);
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerhtml = Math.round(celsiusTemperature);
 }
 
 let searchButton = document.querySelector("#temperature");
@@ -119,6 +119,6 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 let farenheitLink = document.querySelector("#farenheit-link");
 farenheitLink.addEventListener("click", displayFarenheitTemperature);
 
-let farenheitTemperature = null;
+let celsiusTemperature = null;
 
 search("San Diego");
