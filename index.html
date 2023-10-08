@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
     <link rel="stylesheet" href="src/styles.css" />
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-    href="https://fonts.googleapis.com/css2?family=Flavors&family=Inclusive+Sans&family=Merriweather:wght@700&family=Montserrat:wght@500&family=Saira+Extra+Condensed&display=swap"
-    rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Flavors&family=Inclusive+Sans&family=Merriweather:wght@700&family=Montserrat:wght@500&family=Saira+Extra+Condensed&display=swap"
+      rel="stylesheet"
     />
-    
+
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <link
       rel="stylesheet"
@@ -26,8 +26,9 @@
     <div class="container">
       <div class="weather-report">
         <div id="search-form">
-          <form class="location-input" >
-            <input class="col-8"
+          <form class="location-input">
+            <input
+              class="col-8"
               type="search"
               id="search-city-input"
               placeholder="Enter Location"
@@ -38,24 +39,25 @@
         </div>
         <h1 id="city"></h1>
         <h2 class="date" id="current-date-data"></h2>
-    <div class="row">
-      <div class="col-6">
-        <div class="weather-temperature">
-          <img id ="icon"
-            src="https://openweathermap.org/img/wn/10d@2x.png"
-            alt="sun icon"
-            class="d-flex"
-          />
-          <div class="d-flex"> 
-          <strong id="temperature"></strong>
-          <span class="units"> 
-            <a href="#" id="celsius-link">°C</a> |
-            <a href="#" id="farenheit-link">°F</a>  
-          </span>
-          </div> 
+        <div class="row">
+          <div class="col-6">
+            <div class="weather-temperature">
+              <img
+                id="icon"
+                src="https://openweathermap.org/img/wn/10d@2x.png"
+                alt="sun icon"
+                class="d-flex"
+              />
+              <div class="d-flex">
+                <strong id="temperature"></strong>
+                <span class="units">
+                  <a href="#" id="celsius-link">°C</a> |
+                  <a href="#" id="farenheit-link">°F</a>
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
         <div class="col-6">
           <ul>
             <li id="weather-description"></li>
@@ -63,60 +65,9 @@
             <li>Wind: <span id="wind-speed"></span>mph</li>
           </ul>
         </div>
-        <div class="weather-container text-center">
-          <div class="row">
-            <div class="col-2">
-              <h3>Mon</h3>
-              <img
-                src="src/images/2682802_cloudy_day_fog_foggy_mist_icon.svg"
-                alt=""
-              />
-              <p class="forecast-temp"><strong>81°</strong>|64°</p>
-            </div>
-
-            <div class="col-2">
-              <h3>Tues</h3>
-              <img
-                src="src/images/2682848_day_forecast_sun_sunny_weather_icon.svg"
-                alt=""
-              />
-              <p class="forecast-temp"><strong>85°</strong>|66°</p>
-            </div>
-            <div class="col-2">
-              <h3>Wed</h3>
-              <img
-                src="src/images/2682848_day_forecast_sun_sunny_weather_icon.svg"
-                alt=""
-              />
-              <p class="forecast-temp"><strong>81°</strong>|67°</p>
-            </div>
-            <div class="col-2">
-              <h3>Thurs</h3>
-              <img
-                src="src/images/2682812_cloud_coudy_day_fog_mist_icon.svg"
-                alt=""
-              />
-              <p class="forecast-temp"><strong>79°</strong>|68°</p>
-            </div>
-            <div class="col-2">
-              <h3>Fri</h3>
-              <img
-                src="src/images/2682848_day_forecast_sun_sunny_weather_icon.svg"
-                alt=""
-              />
-              <p class="forecast-temp"><strong>77°</strong>|66°</p>
-            </div>
-            <div class="col-2">
-              <h3>Sat</h3>
-              <img
-                src="src/images/2682802_cloudy_day_fog_foggy_mist_icon.svg"
-                alt=""
-              />
-              <p class="forecast-temp"><strong>79°</strong>|65°</p>
-            </div>
-          </div>
-        </div>
+        <div class="weather-container text-center" id="forecast"></div>
       </div>
+    </div>
     <footer>
       Icons by
       <a

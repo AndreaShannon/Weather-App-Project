@@ -40,7 +40,33 @@ if (currentMinutes < 10) {
 }
 
 currentCalender.innerHTML = `${currentDay} | ${currentMonth} ${currentDate} | ${currentHours}:${currentMinutes}`;
+// Forecast function //
+function displayForecast() {
+  let forecastElement = document.querySelector("forecast");
 
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thurs", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` 
+      <div class="col-2">
+        <div class="weather-forecast-date">${day}</div>
+        <img
+          src="src/images/2682802_cloudy_day_fog_foggy_mist_icon.svg"
+          alt=""
+          width="42"
+        />
+        <div class="weather-forecast-temperatures">
+          <span class="weather-forecast-temp-max"> 81° </span>
+          <span class="weather-forecast-temp-min"> 64° </span>
+        </div>
+      </div>
+    `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 // Input of location function //
 function showTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
@@ -121,3 +147,4 @@ let farenheitLink = document.querySelector("#farenheit-link");
 farenheitLink.addEventListener("click", displayFarenheitTemperature);
 
 search("San Diego");
+displayForecast();

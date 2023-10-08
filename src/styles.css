@@ -55,7 +55,7 @@ ul {
 
 .weather-report {
   display: block;
-  max-width: 500px;
+  max-width: 600px;
   margin: 15px auto;
   padding: 15px 28px;
   background: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
@@ -66,19 +66,24 @@ ul {
   text-transform: capitalize;
 }
 
-.weather-container.text-center {
-  display: flex;
-  align-items: center;
+.weather-container {
   background: rgba(255, 255, 255, 0.5);
   border-radius: 8px;
-  font-size: 12px;
+  font-size: 13px;
   padding: 5px;
-  justify-content: space-evenly;
 }
 
-.weather-container.text-center img {
-  width: 32px;
-  max-width: 100%;
+.weather-forecast-date {
+  font-size: 16px;
+  opacity: 0.5;
+}
+
+.weather-forecast-temp-min {
+  opacity: 0.5;
+}
+
+.weather-forecast-temperatures {
+  font-size: 13px;
 }
 
 .weather-temperature {
