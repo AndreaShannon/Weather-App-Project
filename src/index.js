@@ -42,10 +42,10 @@ if (currentMinutes < 10) {
 currentCalender.innerHTML = `${currentDay} | ${currentMonth} ${currentDate} | ${currentHours}:${currentMinutes}`;
 // Forecast function //
 function displayForecast() {
-  let forecastElement = document.querySelector("forecast");
+  let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Thurs", "Fri", "Sat"];
+  let days = ["Thurs", "Fri", "Sat", "Sun"];
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
