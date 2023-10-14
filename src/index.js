@@ -1,4 +1,4 @@
-let currentCalender = document.querySelector("#date");
+let currentCalender = document.querySelector("#date-data");
 let currentTime = new Date();
 
 let days = [
@@ -66,22 +66,16 @@ function formatDate(timestamp) {
 }
 
 // Forecast function //
-function formatForecastDay(timestamp) {
+function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
   return days[day];
 }
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-  let forecastElement = document.querySelector("#forecast");
-
-  let forecastHTML = `<div class="row">`;
-
-  function displayForecast(response) {
-  let forecast = response.data.daily;
-  console.log(forecast);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -132,7 +126,7 @@ function showTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind-speed");
   let iconElement = document.querySelector("#icon");
-  let dateElement = document.querySelector("#date");
+  let dateElement = document.querySelector("#date-data");
 
   farenheitTemperature = response.data.temperature.current;
 
@@ -152,7 +146,7 @@ function showTemperature(response) {
 
   getForecast(response.data.coordinates);
 }
-
+// Unit Conversion Function //
 function search(city) {
   let apiKey = "4502tcb8bf374064a0104398ofa4b17b";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
@@ -164,35 +158,10 @@ function handleSubmit(event) {
   let city = document.querySelector("#search-city-input").value;
   search(city);
 }
-// Current Position Function //
-function showPosition(response) {
-  let lat = response.coordinates.latitude;
-  let lon = response.coordinates.longitude;
-  let units = "imperial";
-  let apiKey = "4502tcb8bf374064a0104398ofa4b17b";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=${units}`;
-
-  axios.get(apiUrl).then(showTemperature);
-}
-
-function getCurrentLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(showPosition);
-}
-
-// Unit Conversion Function //
-function displayFarenheitTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(farenheitTemperature);
-}
 
 let farenheitTemperature = null;
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
-
-let currentLocationButton = document.querySelector("#location-button");
-currentLocationButton.addEventListener("click", getCurrentLocation);
 
 search("San Diego");
