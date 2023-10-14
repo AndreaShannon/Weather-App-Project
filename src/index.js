@@ -113,41 +113,47 @@ function displayForecast(response) {
   console.log(forecastHTML);
 }
 
-
 // Input of location function //
 function showTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
-  let dateElement = document.querySelector("#date");
+  let dateElement = document.querySelector("#current-date-data");
   let descriptionElement = document.querySelector("#weather-description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind-speed");
   let iconElement = document.querySelector("#icon");
-  
+
   farenheitTemperature = response.data.temperature.current;
-  
+
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   cityElement.innerHTML = response.data.city;
   dateElement.innerHTML = formatDate(response.data.time * 1000);
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = response.data.temperature.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
-  
+
   iconElement.setAttribute(
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
-    );
-    
-    iconElement.setAttribute("alt", response.data.condition.description);
-    
-    getForecast(response.data.coordinates);
-  }
-  function getForecast(coordinates) {
-    console.log(coordinates);
-    let apiKey = "4502tcb8bf374064a0104398ofa4b17b";
-    let apiURL = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&apiKey=${4502tcb8bf374064a0104398ofa4b17b}&units=imperial`;
-    axios.get(apiURL).then(displayForecast);
-  }
+  );
+
+  iconElement.setAttribute("alt", response.data.condition.description);
+
+  getForecast(response.data.coordinates);
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "4502tcb8bf374064a0104398ofa4b17b";
+  let apiURL = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=imperial`;
+  axios.get(apiURL).then(displayForecast);
+}
+// Unit Conversion Function //
+function displayFarenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(farenheitTemperature);
+}
 
 function search(city) {
   let apiKey = "4502tcb8bf374064a0104398ofa4b17b";
@@ -160,50 +166,11 @@ function handleSubmit(event) {
   let city = document.querySelector("#search-city-input").value;
   search(city);
 }
-// Current Position Function //
-function showPosition(response) {
-  let lat = response.coordinates.latitude;
-  let lon = response.coordinates.longitude;
-  let units = "imperial";
-  let apiKey = "4502tcb8bf374064a0104398ofa4b17b";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=${units}`;
 
-  axios.get(apiUrl).then(showTemperature);
-}
-
-function getCurrentLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(showPosition);
-}
-
-// Unit Conversion Function //
-function displayFarenheitTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(farenheitTemperature);
-}
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  let celsiusTemperature = ((farenheitTemperature - 32) * 5) / 9;
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
 let farenheitTemperature = null;
-
-let searchButton = document.querySelector("#temperature");
-searchButton.addEventListener("click", showTemperature);
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
-
-let currentLocationButton = document.querySelector("#location-button");
-currentLocationButton.addEventListener("click", getCurrentLocation);
-
-let farenheitLink = document.querySelector("#farenheit-link");
-farenheitLink.addEventListener("click", displayFarenheitTemperature);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("San Diego");
 displayForecast();
