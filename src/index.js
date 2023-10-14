@@ -1,4 +1,4 @@
-let currentCalender = document.querySelector("#current-date-data");
+let currentCalender = document.querySelector("#date");
 let currentTime = new Date();
 
 let days = [
@@ -66,18 +66,22 @@ function formatDate(timestamp) {
 }
 
 // Forecast function //
-function formatDay(timestamp) {
+function formatForecastDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
   return days[day];
 }
 
 function displayForecast(response) {
   let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
 
+  let forecastHTML = `<div class="row">`;
+
+  function displayForecast(response) {
+  let forecast = response.data.daily;
+  console.log(forecast);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -86,51 +90,58 @@ function displayForecast(response) {
       forecastHTML =
         forecastHTML +
         `
-      <div class="col-2">
-        <div class="weather-forecast-date">${formatDay(forecastDay.time)}</div>
-        <img
-          src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
-            forecastDay.condition.icon
-          }.png"
-          alt=""
-          width="42"
-        />
-        <div class="weather-forecast-temperatures">
-          <span class="weather-forecast-temperature-max"> ${Math.round(
-            forecastDay.temperature.maximum
-          )}° </span>
-          <span class="weather-forecast-temperature-min"> ${Math.round(
-            forecastDay.temperature.minimum
-          )}° </span>
-        </div>
-      </div>
-  `;
+                <div class="col-2">
+                  <div class="weather-forecast-date">${formatDay(
+                    forecastDay.time
+                  )}</div>
+                  <img
+                    src="${forecastDay.condition.icon_url}"
+                    alt=""
+                    width="42"
+                  />
+                  <div class="weather-forecast-temperatures">
+                    <span class="weather-forecast-temperature-max"> ${Math.round(
+                      forecastDay.temperature.maximum
+                    )} </span>
+                    <span class="weather-forecast-temperature-min"> ${Math.round(
+                      forecastDay.temperature.minimum
+                    )} </span>
+                  </div>
+                </div>
+              `;
     }
   });
-
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
+}
+
+function getForecast(coordinates) {
+  let lat = coordinates.latitude;
+  let lon = coordinates.longitude;
+  let apiKey = "4502tcb8bf374064a0104398ofa4b17b";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`;
+
+  axios.get(apiUrl).then(displayForecast);
 }
 
 // Input of location function //
 function showTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
-  let dateElement = document.querySelector("#current-date-data");
   let descriptionElement = document.querySelector("#weather-description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind-speed");
   let iconElement = document.querySelector("#icon");
+  let dateElement = document.querySelector("#date");
 
   farenheitTemperature = response.data.temperature.current;
 
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   cityElement.innerHTML = response.data.city;
-  dateElement.innerHTML = formatDate(response.data.time * 1000);
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = response.data.temperature.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
+  dateElement.innerHTML = formatDate(response.data.time * 1000);
 
   iconElement.setAttribute(
     "src",
@@ -140,19 +151,6 @@ function showTemperature(response) {
   iconElement.setAttribute("alt", response.data.condition.description);
 
   getForecast(response.data.coordinates);
-}
-
-function getForecast(coordinates) {
-  console.log(coordinates);
-  let apiKey = "4502tcb8bf374064a0104398ofa4b17b";
-  let apiURL = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=imperial`;
-  axios.get(apiURL).then(displayForecast);
-}
-// Unit Conversion Function //
-function displayFarenheitTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(farenheitTemperature);
 }
 
 function search(city) {
@@ -166,11 +164,35 @@ function handleSubmit(event) {
   let city = document.querySelector("#search-city-input").value;
   search(city);
 }
+// Current Position Function //
+function showPosition(response) {
+  let lat = response.coordinates.latitude;
+  let lon = response.coordinates.longitude;
+  let units = "imperial";
+  let apiKey = "4502tcb8bf374064a0104398ofa4b17b";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=${units}`;
+
+  axios.get(apiUrl).then(showTemperature);
+}
+
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+
+// Unit Conversion Function //
+function displayFarenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(farenheitTemperature);
+}
 
 let farenheitTemperature = null;
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
+let currentLocationButton = document.querySelector("#location-button");
+currentLocationButton.addEventListener("click", getCurrentLocation);
+
 search("San Diego");
-displayForecast();
