@@ -17,16 +17,15 @@ footer a {
   text-decoration: none;
 }
 
-li {
-  list-style: none;
+ul {
   margin: 0;
   padding: 0;
 }
 
-ul {
-  padding: 3px;
-  margin: 0;
-  padding: 0;
+li {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 auto;
 }
 
 #submit-button,
@@ -46,7 +45,7 @@ ul {
   font-size: 28px;
 }
 
-#current-date-data {
+#date {
   font-size: 14px;
 }
 
@@ -69,17 +68,17 @@ ul {
 }
 
 .weather-container {
-  background: rgba(255, 255, 255, 0.145);
+  background: rgba(255, 255, 255, 0.229);
   border-radius: 8px;
   padding: 3px;
 }
 
 .weather-forecast-date {
   font-size: 16px;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
-.weather-forecast-temp-min {
+.weather-forecast-temperature-min {
   opacity: 0.5;
 }
 
@@ -102,4 +101,10 @@ ul {
 .weather-temperature img {
   height: 72px;
   width: 72px;
+}
+.weather-temperature .units {
+  font-size: 20px;
+  position: relative;
+  top: -11px;
+  right: 9px;
 }
