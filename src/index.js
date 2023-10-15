@@ -1,4 +1,4 @@
-let currentCalender = document.querySelector("#date-data");
+let currentCalender = document.querySelector("#date");
 let currentTime = new Date();
 
 let days = [
@@ -126,7 +126,7 @@ function showTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind-speed");
   let iconElement = document.querySelector("#icon");
-  let dateElement = document.querySelector("#date-data");
+  let dateElement = document.querySelector("#date");
 
   farenheitTemperature = response.data.temperature.current;
 
@@ -164,4 +164,4 @@ let farenheitTemperature = null;
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
-search("San Diego");
+search("Orlando");
